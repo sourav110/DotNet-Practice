@@ -58,13 +58,13 @@ namespace StudentRegistrationWebApp {
         protected global::System.Web.UI.WebControls.DropDownList departmentDropDownList;
         
         /// <summary>
-        /// courseDropDownList control.
+        /// inputNoOfCourses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList courseDropDownList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText inputNoOfCourses;
         
         /// <summary>
         /// saveButton control.

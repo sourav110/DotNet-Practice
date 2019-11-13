@@ -7,6 +7,10 @@ namespace StudentRegistrationWebApp.Models
 {
     public class Student
     {
+        public Student()
+        {
+        }
+
         public Student(string studentName, string regNo, string department, int noOfCourse)
         {
             StudentName = studentName;

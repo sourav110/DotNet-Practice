@@ -6,7 +6,7 @@
 
     <div class="form-group">
         <label for="inputStudentName">Student Name</label>
-        <input type="text" class="form-control" id="inputStudentName" runat="server" placeholder="Enter Item Name" />
+        <input type="text" class="form-control" id="inputStudentName" runat="server" placeholder="Enter Student Name" />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Display="Dynamic" ControlToValidate="inputStudentName" ForeColor="red" ErrorMessage="Name Can't be empty"></asp:RequiredFieldValidator>
     </div>
 
@@ -23,10 +23,10 @@
 
     <div class="form-group">
         <label for="inputNoOfCourses">No of Courses</label>
-        <asp:DropDownList ID="courseDropDownList" class="form-control" runat="server"></asp:DropDownList>
+        <input type="text" class="form-control" id="inputNoOfCourses" runat="server" visible="True" placeholder="Enter No of Course taken"/>
     </div>
     
-    <asp:Button ID="saveButton" class="btn btn-primary" runat="server" Text="Save"/>
+    <asp:Button ID="saveButton" class="btn btn-primary" runat="server" Text="Save" OnClick="saveButton_Click"/>
     <br />
     <asp:Label ID="messageLabel" runat="server"></asp:Label>
     
