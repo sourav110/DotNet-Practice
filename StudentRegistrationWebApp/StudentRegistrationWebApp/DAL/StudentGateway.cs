@@ -58,5 +58,56 @@ namespace StudentRegistrationWebApp.DAL
 
             return false;
         }
+
+        public List<Student> GetStudents()
+        {
+            List<Student> students = new List<Student>();
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "SELECT * FROM Student_tbl";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Student aStudent = new Student();
+                aStudent.StudentName = reader["StudentName"].ToString();
+                aStudent.RegNo = reader["RegNo"].ToString();
+                aStudent.Department = reader["Department"].ToString();
+                aStudent.NoOfCourse = Convert.ToInt32(reader["NoOfCourse"]);
+
+                students.Add(aStudent);
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return students;
+        }
+
+        public List<Student> GetStudentsByDept(Student student)
+        {
+            List<Student> studentsByDept = new List<Student>();
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "SELECT StudentName, RegNo, NoOfCourse FROM Student_tbl WHERE Department = '"+student.Department+"' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Student aStudent = new Student();
+                aStudent.StudentName = reader["StudentName"].ToString();
+                aStudent.RegNo = reader["RegNo"].ToString();
+                aStudent.NoOfCourse = Convert.ToInt32(reader["NoOfCourse"]);
+
+                studentsByDept.Add(aStudent);
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return studentsByDept;
+        }
     }
 }

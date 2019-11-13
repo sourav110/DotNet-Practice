@@ -31,5 +31,15 @@ namespace StudentRegistrationWebApp.BLL
                 }
             }
         }
+
+        public List<Student> GetStudents()
+        {
+            return studentGateway.GetStudents(); 
+        }
+
+        public List<Student> GetStudentsByDept(Student student)
+        {
+            return studentGateway.GetStudentsByDept(student);
+        }
     }
 }

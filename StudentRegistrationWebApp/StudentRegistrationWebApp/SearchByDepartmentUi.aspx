@@ -9,10 +9,10 @@
         <asp:DropDownList ID="departmentDropDownList" class="form-control" runat="server"></asp:DropDownList>
     </div>
 
-    <asp:Button ID="searchButton" class="btn btn-primary" runat="server" Text="Search"/>
+    <asp:Button ID="searchButton" class="btn btn-primary" runat="server" Text="Search" OnClick="searchButton_Click"/>
     <br />
     <asp:Label ID="messageLabel" runat="server"></asp:Label>
-
+    <br />
     <asp:GridView ID="searchByDeptGridView" runat="server" AutoGenerateColumns ="false">
         <Columns>
             <asp:TemplateField HeaderText ="SLNo.">
