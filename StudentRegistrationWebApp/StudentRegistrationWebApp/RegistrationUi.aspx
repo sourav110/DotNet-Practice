@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label for="inputNoOfCourses">No of Courses</label>
-        <input type="text" class="form-control" id="inputNoOfCourses" runat="server" visible="True" placeholder="Enter No of Course taken"/>
+        <input type="text" class="form-control" id="inputNoOfCourses" runat="server" visible="True" placeholder="Enter No of Course taken" value="0"/>
     </div>
     
     <asp:Button ID="saveButton" class="btn btn-primary" runat="server" Text="Save" OnClick="saveButton_Click"/>

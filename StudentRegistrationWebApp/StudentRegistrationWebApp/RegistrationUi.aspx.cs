@@ -15,27 +15,14 @@ namespace StudentRegistrationWebApp
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //ShowAllStudent();
+            ShowAllStudent();
 
             if (!IsPostBack)
             {
                 BindDepartmentDropDownList();
-                ShowAllStudent();
             }
         }
-
-        //protected void registrationGridView_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    ShowAllStudent();
-        //}
-
-        //protected void registrationGridView_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    GridView _gridView = (GridView)sender;
-        //    int _selectedIndex = int.Parse(e.CommandArgument.ToString());
-        //    messageLabel.Text = _selectedIndex.ToString();
-        //}
-
+        
         DepartmentManager departmentManager = new DepartmentManager();
         StudentManager studentManager = new StudentManager();
         
@@ -78,6 +65,8 @@ namespace StudentRegistrationWebApp
             {
                 messageLabel.ForeColor = Color.Red;
             }
+
+            ShowAllStudent();
 
             ClearField();
         }
