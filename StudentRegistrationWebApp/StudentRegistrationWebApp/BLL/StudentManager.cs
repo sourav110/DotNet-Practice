@@ -41,5 +41,10 @@ namespace StudentRegistrationWebApp.BLL
         {
             return studentGateway.GetStudentsByDept(student);
         }
+
+        public List<Student> GetStudentsByDate(string fromDate, string toDate)
+        {
+            return studentGateway.GetStudentsByDate(fromDate, toDate);
+        }
     }
 }

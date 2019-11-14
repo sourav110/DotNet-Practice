@@ -46,10 +46,10 @@ namespace StudentRegistrationWebApp
             string deptName = departmentDropDownList.SelectedItem.ToString();
             student.Department = deptName;
 
-            ShowAllStudentByDept(student);
+            SearchAllStudentByDept(student);
         }
 
-        public void ShowAllStudentByDept(Student student)
+        public void SearchAllStudentByDept(Student student)
         {
             List<Student> studentsByDept = new List<Student>();
             studentsByDept = studentManager.GetStudentsByDept(student);

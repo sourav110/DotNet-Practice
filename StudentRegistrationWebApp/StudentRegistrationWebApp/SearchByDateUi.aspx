@@ -15,7 +15,7 @@
         <input type="date" class="form-control" runat="server" id="toDateTextBox">
     </div>
 
-    <asp:Button ID="searchButton" class="btn btn-primary" runat="server" Text="Search"/>
+    <asp:Button ID="searchButton" class="btn btn-primary" runat="server" Text="Search" OnClick="searchButton_Click"/>
     <br />
     <asp:Label ID="messageLabel" runat="server"></asp:Label>
     <br />

@@ -109,5 +109,31 @@ namespace StudentRegistrationWebApp.DAL
 
             return studentsByDept;
         }
+
+        public List<Student> GetStudentsByDate(string fromDate, string toDate)
+        {
+            List<Student> studentsByDate = new List<Student>();
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "SELECT StudentName, RegNo, Department, NoOfCourse FROM Student_tbl WHERE RegDate BETWEEN '"+fromDate+"' AND '"+toDate+"' ";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Student aStudent = new Student();
+                aStudent.StudentName = reader["StudentName"].ToString();
+                aStudent.RegNo = reader["RegNo"].ToString();
+                aStudent.Department = reader["Department"].ToString();
+                aStudent.NoOfCourse = Convert.ToInt32(reader["NoOfCourse"]);
+
+                studentsByDate.Add(aStudent);
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return studentsByDate;
+        }
     }
 }
