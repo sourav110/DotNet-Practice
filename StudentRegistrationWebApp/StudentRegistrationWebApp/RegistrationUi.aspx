@@ -27,9 +27,11 @@
     </div>
     
     <asp:Button ID="saveButton" class="btn btn-primary" runat="server" Text="Save" OnClick="saveButton_Click"/>
-    <asp:Label ID="messageLabel" runat="server"></asp:Label>
+    <asp:Label ID="messageLabel" runat="server"></asp:Label> 
     <br />
-    
+    <asp:Button ID="printReportButton" class="btn btn-success" runat="server" Text="Print Report" OnClick="printReportButton_Click"/>
+    <br />
+
     <hr />
     <asp:GridView ID="registrationGridView" runat="server" AutoGenerateColumns ="false">
         <Columns>

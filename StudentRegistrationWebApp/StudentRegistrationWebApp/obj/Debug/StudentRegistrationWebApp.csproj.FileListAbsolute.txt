@@ -69,3 +69,4 @@ E:\DotNet Practice Repo\StudentRegistrationWebApp\StudentRegistrationWebApp\obj\
 E:\DotNet Practice Repo\StudentRegistrationWebApp\StudentRegistrationWebApp\obj\Debug\StudentRegistrationWebApp.csproj.CopyComplete
 E:\DotNet Practice Repo\StudentRegistrationWebApp\StudentRegistrationWebApp\obj\Debug\StudentRegistrationWebApp.dll
 E:\DotNet Practice Repo\StudentRegistrationWebApp\StudentRegistrationWebApp\obj\Debug\StudentRegistrationWebApp.pdb
+E:\DotNet Practice Repo\StudentRegistrationWebApp\StudentRegistrationWebApp\bin\itextsharp.dll

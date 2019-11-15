@@ -4,9 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Drawing;
 using StudentRegistrationWebApp.Models;
 using StudentRegistrationWebApp.BLL;
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+using System.IO;
 
 namespace StudentRegistrationWebApp
 {
@@ -59,11 +63,11 @@ namespace StudentRegistrationWebApp
 
             if (message == "Added successfully")
             {
-                messageLabel.ForeColor = Color.Green;
+                messageLabel.ForeColor = System.Drawing.Color.Green;
             }
             else
             {
-                messageLabel.ForeColor = Color.Red;
+                messageLabel.ForeColor = System.Drawing.Color.Red;
             }
 
             ShowAllStudent();
@@ -76,6 +80,11 @@ namespace StudentRegistrationWebApp
             inputStudentName.Value = String.Empty;
             inputRegNo.Value = String.Empty;
             inputNoOfCourses.Value = String.Empty;
+        }
+
+        protected void printReportButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
