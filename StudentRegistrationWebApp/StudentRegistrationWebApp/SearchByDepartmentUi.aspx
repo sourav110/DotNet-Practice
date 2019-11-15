@@ -13,6 +13,8 @@
     <asp:Label ID="messageLabel" runat="server"></asp:Label>
 
     <br />
+    <hr />
+
     <asp:GridView ID="searchByDeptGridView" runat="server" AutoGenerateColumns ="false">
         <Columns>
             <asp:TemplateField HeaderText ="SLNo.">

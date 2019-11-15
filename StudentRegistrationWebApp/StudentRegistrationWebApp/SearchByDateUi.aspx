@@ -18,6 +18,7 @@
     <asp:Button ID="searchButton" class="btn btn-primary" runat="server" Text="Search" OnClick="searchButton_Click"/>
     <asp:Label ID="messageLabel" runat="server"></asp:Label>
     <br />
+    <hr />
 
     <asp:GridView ID="searchByDateGridView" runat="server" AutoGenerateColumns ="false">
         <Columns>
