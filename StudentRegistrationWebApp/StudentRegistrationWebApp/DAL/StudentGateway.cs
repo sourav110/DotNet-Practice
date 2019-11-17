@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 using StudentRegistrationWebApp.Models;
+using System.Data;
 
 namespace StudentRegistrationWebApp.DAL
 {
@@ -45,8 +46,25 @@ namespace StudentRegistrationWebApp.DAL
         public bool SaveStudent(Student student)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "INSERT INTO Student_tbl(StudentName, RegNo, Department, NoOfCourse, RegDate) VALUES('"+student.StudentName+"', '"+student.RegNo+"', '"+student.Department+"', "+student.NoOfCourse+" ,'"+student.RegDate+"')";
+            string query = "INSERT INTO Student_tbl(StudentName, RegNo, Department, NoOfCourse, RegDate) VALUES(@StudentName, @RegNo, @Department, @NoOfCourse, @RegDate)";
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.Clear();
+
+            command.Parameters.Add("StudentName", SqlDbType.VarChar);
+            command.Parameters["StudentName"].Value = student.StudentName;
+
+            command.Parameters.Add("RegNo", SqlDbType.VarChar);
+            command.Parameters["RegNo"].Value = student.RegNo;
+
+            command.Parameters.Add("Department", SqlDbType.VarChar);
+            command.Parameters["Department"].Value = student.Department;
+
+            command.Parameters.Add("NoOfCourse", SqlDbType.Int);
+            command.Parameters["NoOfCourse"].Value = student.NoOfCourse;
+
+            command.Parameters.Add("RegDate", SqlDbType.Date);
+            command.Parameters["RegDate"].Value = student.RegDate;
+
             connection.Open();
             int rowEffect = command.ExecuteNonQuery();
             connection.Close();
@@ -90,8 +108,13 @@ namespace StudentRegistrationWebApp.DAL
             List<Student> studentsByDept = new List<Student>();
 
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "SELECT StudentName, RegNo, NoOfCourse FROM Student_tbl WHERE Department = '"+student.Department+"' ";
+            string query = "SELECT StudentName, RegNo, NoOfCourse FROM Student_tbl WHERE Department = @Department";
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.Clear();
+
+            command.Parameters.Add("Department", SqlDbType.VarChar);
+            command.Parameters["Department"].Value = student.Department;
+
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -115,8 +138,17 @@ namespace StudentRegistrationWebApp.DAL
             List<Student> studentsByDate = new List<Student>();
 
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "SELECT StudentName, RegNo, Department, NoOfCourse FROM Student_tbl WHERE RegDate BETWEEN '"+fromDate+"' AND '"+toDate+"' ";
+            string query = "SELECT StudentName, RegNo, Department, NoOfCourse FROM Student_tbl WHERE RegDate BETWEEN @FromDate AND @ToDate";
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.Clear();
+
+            command.Parameters.Add("FromDate", SqlDbType.Date);
+            command.Parameters["FromDate"].Value = fromDate;
+
+            command.Parameters.Add("ToDate", SqlDbType.Date);
+            command.Parameters["ToDate"].Value = toDate;
+
+
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
