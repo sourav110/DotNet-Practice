@@ -80,3 +80,5 @@ E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManageme
 E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManagementMVC\obj\Debug\UVCourseAndResultManagementMVC.pdb
 E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManagementMVC\obj\Debug\UVCourseAndResultManagementMVC.Migrations.version01.resources
 E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManagementMVC\obj\Debug\UVCourseAndResultManagementMVC.csproj.GenerateResource.cache
+E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManagementMVC\obj\Debug\UVCourseAndResultManagementMVC.Migrations.version02.resources
+E:\DotNet Practice Repo\UVCourseAndResultManagementMVC\UVCourseAndResultManagementMVC\obj\Debug\UVCourseAndResultManagementMVC.Migrations.version03.resources

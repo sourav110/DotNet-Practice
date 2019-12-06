@@ -130,6 +130,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,10 +138,20 @@
     <Compile Include="Migrations\201912061646082_version01.designer.cs">
       <DependentUpon>201912061646082_version01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912061746347_version02.cs" />
+    <Compile Include="Migrations\201912061746347_version02.designer.cs">
+      <DependentUpon>201912061746347_version02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061751408_version03.cs" />
+    <Compile Include="Migrations\201912061751408_version03.designer.cs">
+      <DependentUpon>201912061751408_version03.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
     <Compile Include="Models\Semester.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\UVDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,6 +201,11 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Teachers\Create.cshtml" />
+    <Content Include="Views\Teachers\Delete.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Teachers\Edit.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,6 +226,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912061646082_version01.resx">
       <DependentUpon>201912061646082_version01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061746347_version02.resx">
+      <DependentUpon>201912061746347_version02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061751408_version03.resx">
+      <DependentUpon>201912061751408_version03.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
