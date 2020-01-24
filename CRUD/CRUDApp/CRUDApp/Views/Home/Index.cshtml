@@ -1,0 +1,156 @@
+﻿@model CRUDApp.Models.Employee
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+<h2>CRUD Operation</h2>
+<hr />
+
+<div class="row">
+    <a class="btn btn-success" onclick="addview()">Add New</a>
+    <br />
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Country</th>
+                <th>Pin</th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Save Employee Info</h4>
+                </div>
+
+
+                <div class="modal-body" id="categet">
+                    @using (Html.BeginForm("PostData", "Home", FormMethod.Post, new { @id = "submit" }))
+                    {
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @name = "Name", @placeholder = "Enter Name" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @name = "Email", @placeholder = "Enter Email" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @name = "Address", @placeholder = "Enter Address" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @name = "Country", @placeholder = "Enter Country" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @Html.TextBoxFor(m => m.Pin, new { @class = "form-control", @name = "Pin", @placeholder = "Enter Pin" })
+                            </div>
+                        </div>
+
+                        <button type="submit" value="Save" class="btn btn-success" onclick="btnsubmit()">Save</button>
+                    }
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+</div>
+
+
+
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                'ajax': {
+                    "type": "GET",
+                    "url": "@Url.Action("GetData", "Home")",
+                    "datatype" : "JSON"
+                },
+
+                'colums': [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "Email" },
+                    { "data": "Address" },
+                    { "data": "Country" },
+                    { "data": "Pin" },
+
+                    {
+                        "data": "Id", "render": function (data)
+                        {
+                            return "<a class = 'btn btn-danger' onclick = delete(" + data + ")><i  class='glyphicon glyphicon-trash'></i>Delete</a>";
+                        }
+                     },
+                ]
+
+
+
+            });
+
+
+        }); //ready
+    </script>
+
+    <script>
+        function addview() {
+            $('#myModal').modal('show');
+            return false;
+        }
+
+        function btnsubmit() {
+            var data = ("#submit").serialize();
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("PostData", "Home")",
+                data: data,
+                success: function (response) {
+                    if (response == "success") {
+                        alert("Successfully Saved");
+                        window.location.reload();
+                        $("#myModal").modal('hide');
+                    }
+                },
+                error: function (msg) {
+                    alert(msg.responseText);
+                }
+
+            });
+        }
+    </script>
+}

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>CRUD in web api</h2>
+
+<table  class="table table-bordered table-striped" id="table1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+    </tr>
+</table>
+<hr />
+Id : <input type="text" name="id" id="id" value=""/>
+Name : <input type="text" name="name" id="name" value=""/>
+Address : <input type="text" name="address" id="address" value=""/>
+
+<input type="button" name="btn1" id="btn1" value="Add"/>
+<input type="button" name="btn2" id="btn2" value="Delete"/>
+<input type="button" name="btn3" id="btn3" value="Update"/>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#table1").css("display", "none");
+
+        //D
+        $.getJSON("/api/info", function (data) {
+            $("#table1").css("display", "block");
+            $.each(data, function (key, value) {
+                $("#table1").append("<tr><td>" + value.id + "</td><td>" + value.name + "</td><td>" + value.address + "</td></tr>");
+            })
+        })
+
+        //Add
+        $("#btn1").click(function (data) {
+            var name = $("#name").val();
+            var address = $("#address").val();
+
+            $.ajax({
+
+                type: "DELETE",
+                contentType: "application/json, charset = utf-8",
+                url: "/api/info" + id,
+                data: JSON.stringify({
+                    name: name,
+                    address: address
+                }),
+                dataType: "JSON",
+
+                success: function (data) {
+                    $("#table1").find("tr : gt(0)").remove();
+                    $.getJSON("/api/info", function (data) {
+                        $("#table1").css("display", "block");
+                        $.each(data, function (key, value) {
+                            $("#table1").append("<tr><td>" + value.id + "</td><td>" + value.name + "</td><td>" + value.address + "</td></tr>");
+                            alert("added");
+                        })
+                    })
+                }
+            })
+        })
+
+
+        //Delete
+        $("#btn2").click(function () {
+            var id = $("#id").val();
+
+            $.ajax({
+
+                type: "DELETE",
+                contentType: "application/json, charset = utf-8",
+                url: "/api/info" + id,
+                data: JSON.stringify({
+                    name: id
+                }),
+                dataType: "JSON",
+
+                success: function (data) {
+                    $("#table1").find("tr : gt(0)").remove();
+                    $.getJSON("/api/info", function (data) {
+                        $("#table1").css("display", "block");
+                        $.each(data, function (key, value) {
+                            $("#table1").append("<tr><td>" + value.id + "</td><td>" + value.name + "</td><td>" + value.address + "</td></tr>");
+                            alert("deleted");
+                        })
+                    })
+                }
+            })
+        })
+
+
+        //update
+        $("#btn3").click(function (data) {
+            var id = $("#id").val();
+            var name = $("#name").val();
+            var address = $("#address").val();
+
+            $.ajax({
+
+                type: "DELETE",
+                contentType: "application/json, charset = utf-8",
+                url: "/api/info" + id,
+                data: JSON.stringify({
+                    id: id,
+                    name: name,
+                    address: address
+                }),
+                dataType: "JSON",
+
+                success: function (data) {
+                    $("#table1").find("tr : gt(0)").remove();
+                    $.getJSON("/api/info", function (data) {
+                        $("#table1").css("display", "block");
+                        $.each(data, function (key, value) {
+                            $("#table1").append("<tr><td>" + value.id + "</td><td>" + value.name + "</td><td>" + value.address + "</td></tr>");
+                            alert("deleted");
+                        })
+                    })
+                }
+            })
+        })
+
+
+    });
+</script>
